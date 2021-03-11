@@ -1,5 +1,6 @@
 # GamecubeBT
 _work in progress_
+
 An arduino based Dongle to connect a _bluetooth_ PS3 controller to the Gamecube.
 Because Wavebirds are just too expensive.
 ![happy mess](https://github.com/sirjeannot/GamecubeBT/blob/main/gcbt_breadboard.jpg?raw=true)
