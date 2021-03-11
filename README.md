@@ -1,7 +1,7 @@
 # GamecubeBT
 _work in progress_
 
-An arduino based Dongle to connect a _bluetooth_ PS3 controller to the Gamecube.
+An arduino based bridge to connect a bluetooth PS3 controller to the Gamecube.
 Because Wavebirds are just too expensive.
 ![happy mess](https://github.com/sirjeannot/GamecubeBT/blob/main/gcbt_breadboard.jpg?raw=true)
 
@@ -9,8 +9,8 @@ Because Wavebirds are just too expensive.
 ### Current status / Not Working / ToDo
 **Everything works in the BIOS only.**
 * testing all inputs cases
-*** doesn't work ingame**
-* adapt the code for PS4 controller
+* ** doesn't work ingame**
+* adapt the code for PS4 controller : this is only about using PS4BT functions rather than PS3BT
 * make a 3D printed enclosure
 * (optionnal) make a custom pcb
 * Ideas?
