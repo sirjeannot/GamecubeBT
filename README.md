@@ -7,9 +7,7 @@ Because Wavebirds are just too expensive.
 
 
 ### Current status / Not Working / ToDo
-**Everything works in the BIOS only.**
-* testing all inputs cases
-* ** doesn't work ingame**
+* **not usable : either too much input delay or disconnects depending on the interrupt rate**
 * adapt the code for PS4 controller : this is only about using PS4BT functions rather than PS3BT
 * make a 3D printed enclosure
 * (optionnal) make a custom pcb
