@@ -8,7 +8,7 @@
    https://github.com/felis/USB_Host_Shield_2.0
 */
 
-#define TIMER1_MAX 40
+#define TIMER1_MAX 70
 
 //Nintendo gamecube bus
 #include "Nintendo.h"
@@ -28,12 +28,6 @@ BTD Btd(&Usb); // You have to create the Bluetooth Dongle instance like so
 //PS3BT PS3(&Btd); // This will just create the instance
 PS3BT PS3(&Btd, 0x00, 0x15, 0x83, 0x54, 0x00, 0x72); // This will also store the bluetooth address - this can be obtained from the dongle when running the sketch
 //#define pinLed LED_BUILTIN
-
-//debounce variables
-uint8_t oldx = 128;
-uint8_t oldy = 128;
-uint8_t oldcx = 128;
-uint8_t oldcy = 128;
 
 //reset function for failed usb host init
 void(* resetFunc) (void) = 0;
@@ -80,17 +74,10 @@ void loop()
   if (PS3.PS3Connected || PS3.PS3NavigationConnected) {
     //out of deadzone
     if (PS3.getAnalogHat(LeftHatX) > 147 || PS3.getAnalogHat(LeftHatX) < 107 || PS3.getAnalogHat(LeftHatY) > 147 || PS3.getAnalogHat(LeftHatY) < 107 || PS3.getAnalogHat(RightHatX) > 137 || PS3.getAnalogHat(RightHatX) < 117 || PS3.getAnalogHat(RightHatY) > 137 || PS3.getAnalogHat(RightHatY) < 117) {
-      //debounce check
-      //if (( PS3.getAnalogHat(LeftHatX) + PS3.getAnalogHat(LeftHatY) + PS3.getAnalogHat(RightHatX) + PS3.getAnalogHat(RightHatY) != 0 ) && ( oldx + oldy + oldcx + oldcy < 10 ) ) {
       d.report.xAxis = PS3.getAnalogHat(LeftHatX);
-      d.report.yAxis = (PS3.getAnalogHat(LeftHatY) * -1 ); //yaxis values are inverted
+      d.report.yAxis = (255 - PS3.getAnalogHat(LeftHatY)); //yaxis values are inverted
       d.report.cxAxis = PS3.getAnalogHat(RightHatX);
-      d.report.cyAxis = (PS3.getAnalogHat(RightHatY) * -1 ); //yaxis values are inverted
-      oldx = d.report.xAxis;
-      oldy = d.report.yAxis;
-      oldcx = d.report.cxAxis;
-      oldcy = d.report.cyAxis;
-      //}
+      d.report.cyAxis = (255 - PS3.getAnalogHat(RightHatY)); //yaxis values are inverted
     }
     //in deadzone
     else {
