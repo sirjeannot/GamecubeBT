@@ -25,9 +25,8 @@ Gamecube_Data_t d = defaultGamecubeData;
 USB Usb;
 USBHub Hub1(&Usb); // Some dongles have a hub inside
 BTD Btd(&Usb); // You have to create the Bluetooth Dongle instance like so
-//PS3BT PS3(&Btd); // This will just create the instance
-PS3BT PS3(&Btd, 0x00, 0x15, 0x83, 0x54, 0x00, 0x72); // This will also store the bluetooth address - this can be obtained from the dongle when running the sketch
-//#define pinLed LED_BUILTIN
+PS3BT PS3(&Btd); // This will just create the instance
+//PS3BT PS3(&Btd, 0x00, 0x15, 0x83, 0x54, 0x00, 0x72); // This will also store the bluetooth address - this can be obtained from the dongle when running the sketch
 
 //reset function for failed usb host init
 void(* resetFunc) (void) = 0;
@@ -38,16 +37,12 @@ ISR(TIMER1_COMPA_vect) {
 
 void setup()
 {
-  //pinMode(pinLed, OUTPUT);
   GamecubeController1.read();
-  //Serial.begin(250000);
 
   while (Usb.Init() == -1) {
-    Serial.print(F("\r\nOSC did not start"));
     delay(500);
     resetFunc();
   }
-  Serial.println(F("\r\nPS3 Bluetooth Library Started"));
 
   cli();
   //set timer1 interrupt at 1Hz
