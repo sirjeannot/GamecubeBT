@@ -59,6 +59,11 @@ Data logic on the Gamecube is 3.3V, D8 pin shall be routed through a logic level
 | HV1 | D8 | |
 | LV1 | | DATA |
 
+### Controler layout
+This is the default layout I chose. Feel free to change it : the switch position of the left stick and d-pad is sometimes not the best choice.
+
+![layout](https://github.com/sirjeannot/GamecubeBT/blob/main/gcbt_layout.jpg?raw=true)
+
 ### Demo
 [![youtube video](https://img.youtube.com/vi/1kgraJjbjtY/0.jpg)](https://www.youtube.com/embed/1kgraJjbjtY)
 
