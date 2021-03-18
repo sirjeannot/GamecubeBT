@@ -8,10 +8,9 @@ Because Wavebirds are just too expensive.
 
 ### Current status / Not Working / ToDo
 * **working!**
-* adapt the code for PS4 controller : this is only about using PS4BT functions rather than PS3BT
 * make a 3D printed enclosure
-* (optionnal) make a custom pcb
-* Ideas?
+* reduce sticks sensitivity. amplitude reported by the controller is 128, GameCube uses 100.
+* adapt the code for PS4 controller : this is only about using PS4BT functions rather than PS3BT
 
 ### Bill of material
 For this project I used components I had gathering dust : Arduino Nano, BT dongle TBW-107UB.
