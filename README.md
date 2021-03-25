@@ -5,6 +5,8 @@ Homemade Wavebirds, because the TV is too far from the couch.
 
 ![done](https://github.com/sirjeannot/GamecubeBT/blob/main/gcbt_final.jpg?raw=true)
 
+This is nothing new, this is using two existing libraries : Nicohoods Nintendo to handle controller data sent to the GameCube, and PS3BT to use a PS3 controller.
+
 ### Current status / Not Working / ToDo
 * **working!**
 * reduce sticks sensitivity. amplitude reported by the controller is 128, GameCube uses 100.
@@ -56,7 +58,7 @@ Data logic on the Gamecube is 3.3V, D8 pin shall be routed through a logic level
 | HV1 | D8 | |
 | LV1 | | DATA |
 
-### Controler layout
+### Controller layout
 This is the default layout I chose. Feel free to change it : the switch position of the left stick and d-pad is sometimes not the best choice.
 
 ![layout](https://github.com/sirjeannot/GamecubeBT/blob/main/gcbt_layout.jpg?raw=true)
