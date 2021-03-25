@@ -1,14 +1,12 @@
 # GamecubeBT
-_work in progress_
 
 An arduino based bridge to connect a bluetooth PS3 controller to the Gamecube.
-Because Wavebirds are just too expensive.
-![happy mess](https://github.com/sirjeannot/GamecubeBT/blob/main/gcbt_breadboard.jpg?raw=true)
+Homemade Wavebirds, because the TV is too far from the couch.
 
+![done](https://github.com/sirjeannot/GamecubeBT/blob/main/gcbt_final.jpg?raw=true)
 
 ### Current status / Not Working / ToDo
 * **working!**
-* make a 3D printed enclosure
 * reduce sticks sensitivity. amplitude reported by the controller is 128, GameCube uses 100.
 * adapt the code for PS4 controller : this is only about using PS4BT functions rather than PS3BT
 
@@ -62,6 +60,13 @@ Data logic on the Gamecube is 3.3V, D8 pin shall be routed through a logic level
 This is the default layout I chose. Feel free to change it : the switch position of the left stick and d-pad is sometimes not the best choice.
 
 ![layout](https://github.com/sirjeannot/GamecubeBT/blob/main/gcbt_layout.jpg?raw=true)
+
+### Enclosure
+
+The enclosure comes in two parts, located in the stl subfolder.
+They should be printed with layers = 0.2mm. Place the outside face on the bed to print without support. 
+To close the box, use 4xm3 screws, 2.2cm length.
+![model](https://github.com/sirjeannot/GamecubeBT/blob/main/gcbt_box.jpg?raw=true)
 
 ### Demo
 [![youtube video](https://img.youtube.com/vi/1kgraJjbjtY/0.jpg)](https://www.youtube.com/embed/1kgraJjbjtY)
