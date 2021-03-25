@@ -39,7 +39,7 @@ Wiring of the SS pin of the USB Host may be different depending on the Arduino b
 | GND | GND | GND (both) |
 |  | 3.3V | 3.3V |
 | 5V | Vcc | 5V |
-| D2 | INT | |
+| D3 | INT | |
 | D8 | | DATA* |
 | D10 | SS | |
 | D11 | MOSI | |
