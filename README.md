@@ -71,7 +71,7 @@ To close the box, use 4xm3 screws, 2.2cm length.
 ![model](https://github.com/sirjeannot/GamecubeBT/blob/main/gcbt_box.jpg?raw=true)
 
 ### Demo
-[![youtube video](https://img.youtube.com/vi/1kgraJjbjtY/0.jpg)](https://www.youtube.com/embed/1kgraJjbjtY)
+[![youtube video](https://img.youtube.com/vi/wYV4qaWRAow/0.jpg)](https://youtu.be/wYV4qaWRAow)
 
 ### Documentation / References
 * Nico Nintendo Library : https://github.com/NicoHood/Nintendo
