@@ -3,7 +3,7 @@
 An arduino based bridge to connect a bluetooth PS3 controller to the Gamecube.
 Homemade Wavebirds, because the TV is too far from the couch.
 
-![done](https://github.com/sirjeannot/GamecubeBT/blob/main/gcbt_final.jpg?raw=true)
+![done](https://github.com/sirjeannot/GamecubeBT/blob/main/gcbt_final2.jpg?raw=true)
 
 This is nothing new, this is using two existing libraries : Nicohoods Nintendo to handle controller data sent to the GameCube, and PS3BT to use a PS3 controller.
 
