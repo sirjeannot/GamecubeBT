@@ -10,7 +10,8 @@ This is nothing new, this is using two existing libraries : Nicohoods Nintendo t
 ### Current status / Not Working / ToDo
 * **working!**
 * reduce sticks sensitivity. amplitude reported by the controller is 128, GameCube uses 100.
-* adapt the code for PS4 controller : this is only about using PS4BT functions rather than PS3BT
+* adapt the code for PS4 controller : this is only about using PS4BT functions rather than PS3BT.
+* support Powera Gamecube Switch controller
 
 ### Bill of material
 For this project I used components I had gathering dust : Arduino Nano, BT dongle TBW-107UB.
@@ -78,3 +79,11 @@ To close the box, use 4xm3 screws, 2.2cm length.
 * USB HOST v2.0 : https://github.com/felis/USB_Host_Shield_2.0
 * MAX3421E : https://datasheets.maximintegrated.com/en/ds/MAX3421E.pdf
 * DIY Wireless Gamecube Controller : https://hackaday.io/project/162348
+
+### Q&A
+* Why let the usb dongle stick out? --> This is part of the pairing process : the controller will need to be connected to the usb plug to get the MAC address of the BT dongle for the PS3 controller.
+* Why not use an ESP32 which has integrated bluetooth? --> 1. I didn't have any spare esp32 when I did that project. 2. The Nintendo library from Nicohood has time sensitive routines coded in AVR assembly for 16MHz clocks. I didn't want to review timings as it was supposed to be a simple straightforward project to reuse old arduinos.
+* It already exists, BlueRetro does it better! --> Yes it does, it supports more consoles, more controllers and more ports. My intent was to use simple and 'in my inventory' items. Also BlueRetro does it the right way by allocating one core for Bluetooth and one core for Wire. This project does both on a single core with a 10x lower clockspeed (but only one controller, can't do everything!). That may be a lead to support the Powera Gamecube Switch controller which was the initial goal of the project.
+
+### Coverage
+* Hackaday : https://hackaday.com/2021/03/29/bluetooth-ps3-controllers-modernize-the-nintendo-gamecube/
