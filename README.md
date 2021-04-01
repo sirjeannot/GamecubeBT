@@ -9,9 +9,13 @@ This is nothing new, this is using two existing libraries : Nicohoods Nintendo t
 
 ### Current status / Not Working / ToDo
 * **working!**
-* reduce sticks sensitivity. amplitude reported by the controller is 128, GameCube uses 100.
+* **stick sensitivity ok!**
 * adapt the code for PS4 controller : this is only about using PS4BT functions rather than PS3BT.
 * support Powera Gamecube Switch controller
+
+### Limitations
+* no rumble support
+* inputs can be missed in case of mashing of buttons
 
 ### Bill of material
 For this project I used components I had gathering dust : Arduino Nano, BT dongle TBW-107UB.
