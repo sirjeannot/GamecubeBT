@@ -6,9 +6,14 @@
    https://github.com/NicoHood/Nintendo
    Based on USBHOST library
    https://github.com/felis/USB_Host_Shield_2.0
+   Interrupt howto
+   https://www.instructables.com/Arduino-Timer-Interrupts/
 */
 
+//timer for gamecube interrupt
 #define TIMER1_MAX 70
+//scale for analog axis
+#define SCALE 0.785
 
 //Nintendo gamecube bus
 #include "Nintendo.h"
@@ -27,6 +32,7 @@ USBHub Hub1(&Usb); // Some dongles have a hub inside
 BTD Btd(&Usb); // You have to create the Bluetooth Dongle instance like so
 PS3BT PS3(&Btd); // This will just create the instance
 //PS3BT PS3(&Btd, 0x00, 0x15, 0x83, 0x54, 0x00, 0x72); // This will also store the bluetooth address - this can be obtained from the dongle when running the sketch
+//#define pinLed LED_BUILTIN
 
 //reset function for failed usb host init
 void(* resetFunc) (void) = 0;
@@ -37,12 +43,16 @@ ISR(TIMER1_COMPA_vect) {
 
 void setup()
 {
+  //pinMode(pinLed, OUTPUT);
   GamecubeController1.read();
+  //Serial.begin(250000);
 
   while (Usb.Init() == -1) {
+    Serial.print(F("\r\nOSC did not start"));
     delay(500);
     resetFunc();
   }
+  Serial.println(F("\r\nPS3 Bluetooth Library Started"));
 
   cli();
   //set timer1 interrupt at 1Hz
@@ -50,10 +60,7 @@ void setup()
   TCCR1B = 0;// same for TCCR1B
   TCNT1 = 0;//initialize counter value to 0
   // set compare match register for 1hz increments
-  OCR1A = TIMER1_MAX;// = (16*10^6) / (1*1024) - 1 (must be <65536)
-  //testing. lowest working without killing IO for usb on timer1 : 40-1024, highest working
-  //testing. lowest working without sending twice state : 70-1024. 40 barely works
-  //testing. highest working without disconnect :
+  OCR1A = TIMER1_MAX;// = (70*10^6) / (1*1024) - 1 (must be <65536)
   // turn on CTC mode
   TCCR1B |= (1 << WGM12);
   // Set CS10 and CS12 bits for 1024 prescaler
@@ -69,10 +76,14 @@ void loop()
   if (PS3.PS3Connected || PS3.PS3NavigationConnected) {
     //out of deadzone
     if (PS3.getAnalogHat(LeftHatX) > 147 || PS3.getAnalogHat(LeftHatX) < 107 || PS3.getAnalogHat(LeftHatY) > 147 || PS3.getAnalogHat(LeftHatY) < 107 || PS3.getAnalogHat(RightHatX) > 137 || PS3.getAnalogHat(RightHatX) < 117 || PS3.getAnalogHat(RightHatY) > 137 || PS3.getAnalogHat(RightHatY) < 117) {
-      d.report.xAxis = PS3.getAnalogHat(LeftHatX);
+/*      d.report.xAxis = PS3.getAnalogHat(LeftHatX);
       d.report.yAxis = (255 - PS3.getAnalogHat(LeftHatY)); //yaxis values are inverted
       d.report.cxAxis = PS3.getAnalogHat(RightHatX);
-      d.report.cyAxis = (255 - PS3.getAnalogHat(RightHatY)); //yaxis values are inverted
+      d.report.cyAxis = (255 - PS3.getAnalogHat(RightHatY)); //yaxis values are inverted */
+      d.report.xAxis = PS3.getAnalogHat(LeftHatX) * SCALE + 28;
+      d.report.yAxis = (255 - PS3.getAnalogHat(LeftHatY) * SCALE) - 27; //yaxis values are inverted
+      d.report.cxAxis = PS3.getAnalogHat(RightHatX) * SCALE + 28;
+      d.report.cyAxis = (255 - PS3.getAnalogHat(RightHatY) * SCALE) - 27 ; //yaxis values are inverted
     }
     //in deadzone
     else {
