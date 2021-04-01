@@ -76,10 +76,6 @@ void loop()
   if (PS3.PS3Connected || PS3.PS3NavigationConnected) {
     //out of deadzone
     if (PS3.getAnalogHat(LeftHatX) > 147 || PS3.getAnalogHat(LeftHatX) < 107 || PS3.getAnalogHat(LeftHatY) > 147 || PS3.getAnalogHat(LeftHatY) < 107 || PS3.getAnalogHat(RightHatX) > 137 || PS3.getAnalogHat(RightHatX) < 117 || PS3.getAnalogHat(RightHatY) > 137 || PS3.getAnalogHat(RightHatY) < 117) {
-/*      d.report.xAxis = PS3.getAnalogHat(LeftHatX);
-      d.report.yAxis = (255 - PS3.getAnalogHat(LeftHatY)); //yaxis values are inverted
-      d.report.cxAxis = PS3.getAnalogHat(RightHatX);
-      d.report.cyAxis = (255 - PS3.getAnalogHat(RightHatY)); //yaxis values are inverted */
       d.report.xAxis = PS3.getAnalogHat(LeftHatX) * SCALE + 28;
       d.report.yAxis = (255 - PS3.getAnalogHat(LeftHatY) * SCALE) - 27; //yaxis values are inverted
       d.report.cxAxis = PS3.getAnalogHat(RightHatX) * SCALE + 28;
